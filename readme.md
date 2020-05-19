@@ -1,12 +1,13 @@
 This is a repo that documents the various scripts I used to create a server that loops a different song every hour.
 
-The architecture is simple; a single VM runs the [icecast server](http://icecast.org/) that broadcasts audio, as well as a [Liquidsoap server](https://www.liquidsoap.info/) that manages the audio to broadcast.
+The architecture is simple; a single VM runs the [icecast server](http://icecast.org/) that broadcasts audio, as well as a [Liquidsoap server](https://www.liquidsoap.info/) that serves the audio.
 
 I deployed this on GCP with a compute engine and a separate persistent disk that stored the media. To hide the server password, I employed Google's Secrets Manager to safely store and retreive the password.
 
 I made the following modifications to a default compute engine instance before running:
 * Open port 8000 to allow clients to connect to icecast
 * Grant the instance read access to the secrets manager through a separate service account on Google IAM
+* Attach a separate disk to store the audio files on independent of the VM
 * As a matter of preference, I used Ubuntu 18.04 LTS instead of the default container image provided by Google
 
 In this repo, you'll see:
