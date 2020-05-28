@@ -1,3 +1,5 @@
+# First time formatting instructions: https://cloud.google.com/compute/docs/disks/add-persistent-disk#formatting
+
 # create mountpoint for audio
 sudo mkdir -p /media/icecast-disk/
 
